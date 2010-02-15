@@ -1,0 +1,14 @@
+body {
+	margin: 0;
+}
+
+.back {
+	display: none;
+	width: 100%;
+	height: 100%;
+}
+
+.front {
+	width: 100%;
+	height: 100%;
+}

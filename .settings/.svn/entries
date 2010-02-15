@@ -1,0 +1,42 @@
+10
+
+dir
+0
+https://gashboard.googlecode.com/svn/trunk/.settings
+https://gashboard.googlecode.com/svn
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5e9b253a-1a51-11df-85e6-9b4bd7dd5138
+
+com.google.gwt.eclipse.core.prefs
+file
+
+
+
+add
+
+com.google.appengine.eclipse.core.prefs
+file
+
+
+
+add
+

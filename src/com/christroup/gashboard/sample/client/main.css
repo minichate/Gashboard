@@ -1,0 +1,23 @@
+@sprite .front {
+	gwt-image: "front";
+	padding: 20px;
+	width: 240px;
+	height: 340px;
+}
+
+@sprite .back {
+	gwt-image: "back";
+	padding: 20px;
+	width: 240px;
+	height: 340px;
+}
+
+.title {
+	font-family: Helvetica,Arial,sans-serif;
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.3);
+	font-weight: bold;
+	letter-spacing: -1px;
+	color: #333;
+	font-size: 20px;
+	margin-top: 5px;
+}
