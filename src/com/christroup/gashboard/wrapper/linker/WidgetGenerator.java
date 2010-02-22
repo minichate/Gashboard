@@ -29,7 +29,7 @@ public class WidgetGenerator extends Generator {
 	  @Override
 	  public String generate(TreeLogger logger, GeneratorContext context,
 	      String typeName) throws UnableToCompleteException {
-
+		  
 	    // The TypeOracle knows about all types in the type system
 	    TypeOracle typeOracle = context.getTypeOracle();
 
