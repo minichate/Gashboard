@@ -54,8 +54,10 @@ public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandle
 			parent.@com.christroup.gashboard.wrapper.client.DashboardWidget::fireVisibilityHide()();
 		}
 		
-		$wnd.widget.onshow = fireshow;
-		$wnd.widget.onhide = firehide;
+		if ($wnd.widget) {
+			$wnd.widget.onshow = fireshow;
+			$wnd.widget.onhide = firehide;
+		}
 	}-*/;
 
 	public final native void watchDrags() /*-{
@@ -68,8 +70,10 @@ public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandle
 			parent.@com.christroup.gashboard.wrapper.client.DashboardWidget::fireDragEndEvent()();
 		}
 		
-		$wnd.widget.ondragstart = firedragstart;
-		$wnd.widget.ondragend = firedragend;
+		if ($wnd.widget) {
+			$wnd.widget.ondragstart = firedragstart;
+			$wnd.widget.ondragend = firedragend;
+		}
 	}-*/;
 	
 	@SuppressWarnings("unused")
