@@ -2,9 +2,11 @@ package com.christroup.gashboard.wrapper.client.preferences;
 
 import java.util.HashMap;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Cookies;
 
 public class PreferenceManager implements HasPreferenceChangeHandlers<String> {
 
@@ -27,11 +29,8 @@ public class PreferenceManager implements HasPreferenceChangeHandlers<String> {
      * @param key key of the preference you want to get
      */
 	public String getPreference(String key) {
-		String pref = getWidgetPreference(key);
-		if (pref == null) {
-			pref = preferences.get(key);
-		}
-		return pref;
+		if (!GWT.isScript()) return Cookies.getCookie(key);
+		return getWidgetPreference(key);
 	}
 	
 	/**
@@ -41,8 +40,11 @@ public class PreferenceManager implements HasPreferenceChangeHandlers<String> {
      * @param preference data you would like stored
      */
 	public void setPreference(String key, String preference) {
-		preferences.put(key, preference);
-		setWidgetPreference(key, preference);
+		if (!GWT.isScript()) {
+			Cookies.setCookie(key, preference);
+		} else {
+			setWidgetPreference(key, preference);
+		}
 		fireEvent(new PreferenceChangeEvent<String>(key));
 	}
 	
