@@ -1,8 +1,11 @@
 package com.christroup.gashboard.wrapper.client;
 
 import com.christroup.gashboard.wrapper.client.events.HasWidgetDragHandlers;
+import com.christroup.gashboard.wrapper.client.events.HasWidgetVisibilityHandlers;
 import com.christroup.gashboard.wrapper.client.events.WidgetDragEvent;
 import com.christroup.gashboard.wrapper.client.events.WidgetDragHandler;
+import com.christroup.gashboard.wrapper.client.events.WidgetVisibilityEvent;
+import com.christroup.gashboard.wrapper.client.events.WidgetVisibilityHandler;
 import com.christroup.gashboard.wrapper.client.shared.WidgetResources;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.dom.client.Element;
@@ -12,7 +15,7 @@ import com.google.gwt.event.shared.HandlerRegistration;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
-public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandlers {
+public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandlers, HasWidgetVisibilityHandlers {
 	
 	private HandlerManager handlerManager = new HandlerManager(this);
 	
@@ -32,6 +35,7 @@ public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandle
 		back.setStylePrimaryName(WidgetResources.INSTANCE.css().back());
 		
 		watchDrags();
+		watchVisibility();
 		
 		container.add(front);
 		container.add(back);
@@ -40,6 +44,20 @@ public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandle
 		widgetBack(back);
 	}
 	
+	private final native void watchVisibility() /*-{
+		var parent = this;
+		var fireshow = function() {
+			parent.@com.christroup.gashboard.wrapper.client.DashboardWidget::fireVisibilityShow()();
+		}
+		
+		var firehide = function() {
+			parent.@com.christroup.gashboard.wrapper.client.DashboardWidget::fireVisibilityHide()();
+		}
+		
+		$wnd.widget.onshow = fireshow;
+		$wnd.widget.onhide = firehide;
+	}-*/;
+
 	public final native void watchDrags() /*-{
 		var parent = this;
 		var firedragstart = function() {
@@ -64,9 +82,24 @@ public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandle
 		fireEvent(new WidgetDragEvent(false));
 	}
 	
+	@SuppressWarnings("unused")
+	private void fireVisibilityShow() {
+		fireEvent(new WidgetVisibilityEvent(true));
+	}
+	
+	@SuppressWarnings("unused")
+	private void fireVisibilityHide() {
+		fireEvent(new WidgetVisibilityEvent(false));
+	}
+	
 	@Override
 	public HandlerRegistration addWidgetDragHandler(WidgetDragHandler handler) {
 		return handlerManager.addHandler(WidgetDragEvent.getType(), handler);
+	}
+	
+	@Override
+	public HandlerRegistration addWidgetVisibilityHandler(WidgetVisibilityHandler handler) {
+		return handlerManager.addHandler(WidgetVisibilityEvent.getType(), handler);
 	}
 
 	@Override
