@@ -12,6 +12,7 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerManager;
 import com.google.gwt.event.shared.HandlerRegistration;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.AbsolutePanel;
 import com.google.gwt.user.client.ui.RootPanel;
 
@@ -43,6 +44,14 @@ public abstract class DashboardWidget implements EntryPoint, HasWidgetDragHandle
 		widgetFront(front);
 		widgetBack(back);
 	}
+	
+	public final native void openURL(String url) /*-{
+		if ($wnd.widget) {
+			$wnd.widget.openURL(url);
+		} else {
+			@com.google.gwt.user.client.Window::open(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)(url, "_blank", "");
+		}
+	}-*/;
 	
 	private final native void watchVisibility() /*-{
 		var parent = this;
