@@ -46,11 +46,11 @@ public class PreferenceManager implements HasPreferenceChangeHandlers<String> {
 	}
 	
    
-	public native String getWidgetPreference(String preference) /*-{
+	private native String getWidgetPreference(String preference) /*-{
 		if ($wnd.widget) return $wnd.widget.preferenceForKey(preference);
 	}-*/;
 
-	public native void setWidgetPreference(String key, String preference) /*-{
+	private native void setWidgetPreference(String key, String preference) /*-{
 		if ($wnd.widget) {
 			$wnd.widget.setPreferenceForKey(preference, key);
 		}
