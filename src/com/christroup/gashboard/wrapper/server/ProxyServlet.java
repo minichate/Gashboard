@@ -1,15 +1,11 @@
 package com.christroup.gashboard.wrapper.server;
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Enumeration;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -32,6 +28,7 @@ public class ProxyServlet extends HttpServlet {
 		handleRequest(request, response, true);
 	}
 	
+	@SuppressWarnings({ "unchecked", "deprecation" })
 	private void handleRequest(HttpServletRequest request, HttpServletResponse response, boolean isPost) throws ServletException, IOException {
 		String reqString = request.getHeader("Requested-URL");
 		

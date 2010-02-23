@@ -1,7 +1,5 @@
 package com.christroup.gashboard.wrapper.client.preferences;
 
-import java.util.HashMap;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.shared.GwtEvent;
 import com.google.gwt.event.shared.HandlerManager;
@@ -12,7 +10,6 @@ public class PreferenceManager implements HasPreferenceChangeHandlers<String> {
 
 	private static PreferenceManager manager;
 	private HandlerManager handlerManager = new HandlerManager(this);
-	private HashMap<String, String> preferences = new HashMap<String, String>();
 	
 	protected PreferenceManager() {}
 	

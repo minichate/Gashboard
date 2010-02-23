@@ -2,6 +2,7 @@ package com.christroup.gashboard.wrapper.client.preferences;
 
 import com.google.gwt.event.shared.GwtEvent;
 
+@SuppressWarnings("unchecked")
 public class PreferenceChangeEvent<T> extends GwtEvent<PreferenceChangeHandler> {
 	
 	private final T preferenceKey;
