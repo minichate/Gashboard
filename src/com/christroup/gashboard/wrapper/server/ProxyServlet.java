@@ -69,20 +69,7 @@ public class ProxyServlet extends HttpServlet {
         } catch (IOException e) {
             // ...
         }
-//		
-//		URL url = new URL(reqString);
-//		InputStreamReader isr = new InputStreamReader(url.openStream());
-//		BufferedReader reader = new BufferedReader(isr);
-//        String line;
-//
-//        while ((line = reader.readLine()) != null) {
-//            response.getWriter().write(line);
-//        }
-//
-//        response.setCharacterEncoding(isr.getEncoding());
-//        response.addHeader("Requested-From", reqString);
-//        
-//        reader.close();
+
 
 	}
 	
