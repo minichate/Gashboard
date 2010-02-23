@@ -18,4 +18,7 @@
   	<script src="file:///System/Library/WidgetResources/AppleClasses/AppleInfoButton.js"/>
 
 	<source path="client"/>
+	
+	<servlet class="com.christroup.gashboard.wrapper.server.ProxyServlet" path="/proxy"/>
+	
 </module>
