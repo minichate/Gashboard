@@ -5,13 +5,10 @@ import com.christroup.gashboard.wrapper.client.DashboardWidget;
 import com.christroup.gashboard.wrapper.client.InfoButton;
 import com.christroup.gashboard.wrapper.client.WidgetOptions;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Style.Position;
-import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.AbsolutePanel;
-import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
 
