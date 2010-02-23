@@ -1,11 +1,17 @@
 package com.christroup.gashboard.wrapper.client;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.dom.client.Style.Position;
 import com.google.gwt.dom.client.Style.Unit;
+import com.google.gwt.dom.client.Style.Visibility;
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.Label;
 
 public class InfoButton extends Composite {
 	
@@ -29,6 +35,20 @@ public class InfoButton extends Composite {
 	protected void onAttach() {
 		super.onAttach();
 		setUp(getInfoElement());
+		
+		if (!GWT.isScript()) {
+			Button i = new Button("i");
+			i.setStylePrimaryName("toBack");
+			i.addClickHandler(new ClickHandler() {
+				
+				@Override
+				public void onClick(ClickEvent event) {
+					DashboardWidget.getBackElement().getStyle().setDisplay(Display.BLOCK);
+					DashboardWidget.getFrontElement().getStyle().setDisplay(Display.NONE);
+				}
+			});
+			infobutton.add(i);
+		}
 	}
 	
 	public Element getInfoElement() {
