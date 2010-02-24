@@ -1,7 +1,9 @@
 package com.christroup.gashboard.wrapper.server;
 
+import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -35,16 +37,27 @@ public class ProxyServlet extends HttpServlet {
 		try {
             URL url = new URL(reqString);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestProperty("Content-type", request.getContentType());
+            
+            System.out.println(reqString);
             
             if (isPost) {
 	            connection.setDoOutput(true);
 	            connection.setRequestMethod("POST");
-	
+	            
 	            OutputStreamWriter writer = new OutputStreamWriter(connection.getOutputStream());
+	            
 	            Map<String, String> params = request.getParameterMap();
 	            
-	            for (String key : params.keySet()) {
-	            	writer.write(key + "=" + params.get(key));
+	            //for (String key : params.keySet()) {
+	            //	writer.write(key + "=" + params.get(key));
+	            //}
+	            BufferedReader reader = request.getReader();
+	            for (;;) {
+	            	String line = reader.readLine();
+	            	if (line == null) break;
+	            	writer.write(line);
+	            	System.out.println(line);
 	            }
 	            writer.close();
             } else {
