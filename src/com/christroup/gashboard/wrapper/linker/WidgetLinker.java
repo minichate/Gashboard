@@ -33,8 +33,8 @@ public class WidgetLinker extends AbstractLinker {
 		}
 		
 		if (context instanceof StandardLinkerContext) {
-			File output = new File("war/" + context.getModuleName() + ".wdgt");
-			logger.log(Type.INFO, "Creating Widget Directory: war/" + context.getModuleName() + ".wdgt");
+			File output = new File(context.getModuleName() + ".wdgt");
+			logger.log(Type.INFO, "Creating Widget Directory: " + context.getModuleName() + ".wdgt");
 			((StandardLinkerContext) context).produceOutputDirectory(logger, toReturn, output);
 		}
 		
