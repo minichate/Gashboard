@@ -10,4 +10,23 @@
     <welcome-file>sample.html</welcome-file>
   </welcome-file-list>
 
+<servlet>
+  <servlet-name>proxyServlet</servlet-name>
+  <servlet-class>com.christroup.gashboard.wrapper.server.ProxyServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>proxyServlet</servlet-name>
+  <url-pattern>/sample/proxy</url-pattern>
+</servlet-mapping>
+
+<servlet>
+  <servlet-name>myServiceImpl</servlet-name>
+  <servlet-class>
+    com.christroup.gashboard.sample.server.TestServiceImpl
+  </servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>myServiceImpl</servlet-name>
+  <url-pattern>/sample/test</url-pattern>
+</servlet-mapping>
 </web-app>
