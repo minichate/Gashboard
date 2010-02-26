@@ -10,6 +10,7 @@ public class RPCRequest {
 
 		ServiceDefTarget svc = (ServiceDefTarget) sdt;
 		svc.setRpcRequestBuilder(new RpcRequestBuilder());
+		
 		svc.setServiceEntryPoint(serviceEntryPoint);
 
 		return (T) sdt;

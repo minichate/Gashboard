@@ -12,7 +12,7 @@ public class TestServiceImpl extends RemoteServiceServlet implements TestService
 
 	@Override
 	public String myTestMethod(String s) {
-		return "worked: " + s;
+		return "Success: " + s;
 	}
 
 }
